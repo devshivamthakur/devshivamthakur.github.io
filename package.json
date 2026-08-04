@@ -5,6 +5,8 @@
   "type": "module",
   "description": "Shivam Kumar Thakur — Products, Portfolio & Blog (SaaS-style portfolio)",
   "scripts": {
+    "prebuild": "node scripts/restore.mjs",
+    "predev": "node scripts/restore.mjs",
     "dev": "vite",
     "build": "vite build",
     "preview": "vite preview",

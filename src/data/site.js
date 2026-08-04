@@ -267,7 +267,39 @@ export const products = [
     stack: ['React', 'FastAPI', 'MongoDB', 'Python', 'JavaScript'],
     status: 'Live',
     year: '2025'
-  }
+  },
+  {
+    slug: 'youtube-rag-chat-bot',
+    name: 'YouTube RAG Chat Bot',
+    tagline: 'Ask Questions About Any Video',
+    category: 'ai-assistants',
+    categoryLabel: 'AI Assistants & Agents',
+    badge: 'LIVE',
+    useCase:
+      'Turn long YouTube videos into Q&A knowledge bases — ask anything and get precise answers with references.',
+    description:
+      'Conversational AI that lets you ask natural language questions about any YouTube video — auto-fetches transcripts, generates embeddings and uses hybrid retrieval (Vector + BM25) for precise answers.',
+    longDescription:
+      'YouTube RAG Chat Bot is an intelligent conversational platform built with Streamlit and LangChain. It accepts any YouTube video URL, automatically retrieves the transcript with support for multiple languages, and processes the text into chunks. Using a hybrid retrieval strategy that combines dense vector embeddings (FAISS) with sparse lexical search (BM25), it provides highly accurate and grounded answers. Users can play specific segments of the video directly matching the source citations.',
+    icon: '🎬',
+    gradient: 'linear-gradient(135deg, #059669, #0ea5e9)',
+    links: {
+      live: 'https://youtube-rag-chat-bot.streamlit.app/',
+      github: 'https://github.com/devshivamthakur/youtube_rag_chat_bot',
+      demo: 'https://youtu.be/vzXoYPCco7Q'
+    },
+    features: [
+      'Hybrid search: vector embeddings + BM25 for maximum precision',
+      'Automatic transcript retrieval with multi-language and auto-generated subtitle support',
+      'Embedded video player with timestamped source citations',
+      'Caching of embeddings to speed up repeat queries',
+      'Sleek, responsive Streamlit interface with chat history'
+    ],
+    stack: ['LangChain', 'FAISS', 'BM25', 'Streamlit', 'Python', 'RAG'],
+    status: 'Live',
+    year: '2025'
+  },
+
 ];
 
 export const portfolioProjects = [
