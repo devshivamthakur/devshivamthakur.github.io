@@ -1,0 +1,8 @@
+Sitemap: https://devshivamthakur.github.io/sitemap.xml
+User-agent: *
+Allow: /
+
+# Exclude private search structures
+Disallow: /dist/
+Disallow: /node_modules/
+Disallow: /scripts/

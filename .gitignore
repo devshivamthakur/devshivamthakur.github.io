@@ -1,0 +1,9 @@
+# Dependencies
+node_modules/
+
+# Build output
+dist/
+
+# Published build (copied to root by `npm run publish`)
+assets/
+.index.source.html

@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shivam Kumar Thakur — GenAI Engineer</title>
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --bg: #080c14;
+      --surface: #0d1421;
+      --surface2: #111827;
+      --border: #1e2d45;
+      --accent: #00e5ff;
+      --accent2: #7c3aed;
+      --accent3: #10b981;
+      --text: #e2e8f0;
+      --text-muted: #64748b;
+      --text-dim: #94a3b8;
+    }
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Syne', sans-serif;
+      overflow-x: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background-image:
+        linear-gradient(rgba(0,229,255,0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(0,229,255,0.03) 1px, transparent 1px);
+      background-size: 60px 60px;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .orb {
+      position: fixed;
+      border-radius: 50%;
+      filter: blur(80px);
+      pointer-events: none;
+      z-index: 0;
+      animation: floatOrb 20s ease-in-out infinite;
+    }
+    .orb-1 { width: 500px; height: 500px; background: rgba(0,229,255,0.06); top: -100px; left: -100px; }
+    .orb-2 { width: 400px; height: 400px; background: rgba(124,58,237,0.07); top: 40%; right: -150px; animation-delay: -7s; }
+    .orb-3 { width: 350px; height: 350px; background: rgba(16,185,129,0.05); bottom: 10%; left: 20%; animation-delay: -14s; }
+
+    @keyframes floatOrb {
+      0%, 100% { transform: translate(0, 0); }
+      33% { transform: translate(30px, -20px); }
+      66% { transform: translate(-20px, 30px); }
+    }
+
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      padding: 20px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: rgba(8,12,20,0.85);
+      backdrop-filter: blur(20px);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .nav-logo {
+      font-family: 'Space Mono', monospace;
+      font-size: 14px;
+      color: var(--accent);
+      letter-spacing: 2px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 36px;
+      list-style: none;
+    }
+
+    .nav-links a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      transition: color 0.2s;
+    }
+    .nav-links a:hover { color: var(--accent); }
+
+    #hero {
+      position: relative;
+      z-index: 1;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding: 120px 60px 60px;
+    }
+
+    .hero-content { max-width: 800px; }
+
+    .hero-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 32px;
+      animation: fadeInUp 0.6s ease both;
+    }
+
+    .hero-tag::before {
+      content: '';
+      width: 6px; height: 6px;
+      background: var(--accent);
+      border-radius: 50%;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    @keyframes pulseDot {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .hero-name {
+      font-size: clamp(52px, 7vw, 88px);
+      font-weight: 800;
+      line-height: 1;
+      letter-spacing: -3px;
+      margin-bottom: 20px;
+      animation: fadeInUp 0.6s ease 0.1s both;
+    }
+
+    .hero-name span {
+      background: linear-gradient(135deg, var(--accent) 0%, var(--accent2) 60%, var(--accent3) 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .hero-title {
+      font-size: 22px;
+      color: var(--text-dim);
+      font-weight: 400;
+      margin-bottom: 24px;
+      animation: fadeInUp 0.6s ease 0.2s both;
+    }
+
+    .hero-desc {
+      font-size: 16px;
+      color: var(--text-muted);
+      line-height: 1.8;
+      max-width: 620px;
+      margin-bottom: 48px;
+      animation: fadeInUp 0.6s ease 0.3s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
+      animation: fadeInUp 0.6s ease 0.4s both;
+    }
+
+    .hero-stats {
+      position: absolute;
+      right: 60px;
+      top: 50%;
+      transform: translateY(-50%);
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      animation: fadeInRight 0.8s ease 0.5s both;
+    }
+
+    .stat-card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 20px 28px;
+      text-align: center;
+      min-width: 130px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .stat-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+    }
+
+    .stat-num {
+      font-size: 34px;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+
+    .stat-label {
+      font-size: 11px;
+      color: var(--text-muted);
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .btn-primary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: var(--accent);
+      color: var(--bg);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .btn-primary:hover { box-shadow: 0 0 30px rgba(0,229,255,0.4); }
+
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: transparent;
+      color: var(--text);
+      padding: 14px 28px;
+      border-radius: 8px;
+      font-weight: 600;
+      font-size: 14px;
+      text-decoration: none;
+      border: 1px solid var(--border);
+      transition: all 0.2s;
+    }
+    .btn-secondary:hover { border-color: var(--accent); color: var(--accent); }
+
+    section {
+      position: relative;
+      z-index: 1;
+      padding: 100px 60px;
+    }
+
+    .section-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 3px;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .section-title {
+      font-size: clamp(32px, 4vw, 54px);
+      font-weight: 800;
+      letter-spacing: -2px;
+      line-height: 1.05;
+      margin-bottom: 16px;
+    }
+    .section-title span { color: var(--accent); }
+
+    .section-sub {
+      color: var(--text-muted);
+      font-size: 16px;
+      max-width: 560px;
+      line-height: 1.7;
+      margin-bottom: 64px;
+    }
+
+    #about {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .about-text p {
+      color: var(--text-dim);
+      font-size: 16px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+    }
+
+    .about-highlights {
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+      margin-top: 28px;
+    }
+
+    .highlight-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 12px;
+      font-size: 14px;
+      color: var(--text-dim);
+      line-height: 1.5;
+    }
+
+    .highlight-dot {
+      width: 7px; height: 7px;
+      background: var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: 5px;
+    }
+
+    .about-skills-box {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 36px;
+    }
+
+    .skill-group { margin-bottom: 24px; }
+    .skill-group:last-child { margin-bottom: 0; }
+
+    .skill-group-label {
+      font-family: 'Space Mono', monospace;
+      font-size: 10px;
+      color: var(--accent);
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .skill-tags { display: flex; flex-wrap: wrap; gap: 7px; }
+
+    .skill-tag {
+      background: rgba(0,229,255,0.08);
+      border: 1px solid rgba(0,229,255,0.15);
+      color: var(--text-dim);
+      padding: 5px 12px;
+      border-radius: 6px;
+      font-size: 12px;
+      font-weight: 600;
+    }
+    .skill-tag.purple { background: rgba(124,58,237,0.08); border-color: rgba(124,58,237,0.2); }
+    .skill-tag.green { background: rgba(16,185,129,0.08); border-color: rgba(16,185,129,0.2); }
+
+    .timeline {
+      position: relative;
+      max-width: 860px;
+    }
+
+    .timeline::before {
+      content: '';
+      position: absolute;
+      left: 0; top: 0; bottom: 0;
+      width: 1px;
+      background: linear-gradient(to bottom, var(--accent), var(--accent2), transparent);
+    }
+
+    .timeline-item {
+      padding-left: 48px;
+      position: relative;
+      margin-bottom: 56px;
+    }
+    .timeline-item:last-child { margin-bottom: 0; }
+
+    .timeline-dot {
+      position: absolute;
+      left: -6px; top: 6px;
+      width: 13px; height: 13px;
+      border-radius: 50%;
+      background: var(--bg);
+      border: 2px solid var(--accent);
+      box-shadow: 0 0 12px rgba(0,229,255,0.4);
+    }
+
+    .timeline-date {
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+      color: var(--accent);
+      letter-spacing: 1px;
+      margin-bottom: 8px;
+    }
+
+    .timeline-company {
+      font-size: 20px;
+      font-weight: 800;
+      margin-bottom: 4px;
+    }
+
+    .timeline-role {
+      font-size: 14px;
+      color: var(--text-muted);
+      margin-bottom: 18px;
+      font-weight: 600;
+    }
+
+    .timeline-bullets { list-style: none; display: flex; flex-direction: column; gap: 10px; }
+
+    .timeline-bullets li {
+      color: var(--text-dim);
+      font-size: 14px;
+      line-height: 1.6;
+      padding-left: 16px;
+      position: relative;
+    }
+    .timeline-bullets li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      font-weight: 700;
+    }
+
+    #projects {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 24px;
+    }
+
+    .project-card {
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 32px;
+      position: relative;
+      overflow: hidden;
+      transition: all 0.3s;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0;
+      transition: opacity 0.3s;
+    }
+
+    .project-card:hover {
+      border-color: rgba(0,229,255,0.3);
+      transform: translateY(-4px);
+      box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+    }
+    .project-card:hover::before { opacity: 1; }
+
+    .project-icon {
+      font-size: 28px;
+      margin-bottom: 16px;
+    }
+
+    .project-name {
+      font-size: 19px;
+      font-weight: 800;
+      margin-bottom: 10px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.7;
+      margin-bottom: 18px;
+      flex: 1;
+    }
+
+    .project-features {
+      list-style: none;
+      margin-bottom: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .project-features li {
+      font-size: 13px;
+      color: var(--text-dim);
+      padding-left: 16px;
+      position: relative;
+    }
+    .project-features li::before {
+      content: '✓';
+      position: absolute;
+      left: 0;
+      color: var(--accent3);
+      font-size: 11px;
+    }
+
+    .project-stack {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .stack-tag {
+      background: rgba(124,58,237,0.1);
+      border: 1px solid rgba(124,58,237,0.2);
+      color: #a78bfa;
+      padding: 3px 10px;
+      border-radius: 5px;
+      font-size: 11px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .project-links { display: flex; gap: 14px; }
+
+    .project-link {
+      font-size: 13px;
+      font-weight: 700;
+      color: var(--accent);
+      text-decoration: none;
+      transition: opacity 0.2s;
+    }
+    .project-link:hover { opacity: 0.7; }
+    .project-link.github { color: var(--text-muted); }
+    .project-link.github:hover { color: var(--text); }
+
+    .rag-flow {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 4px;
+      margin: 14px 0;
+      font-family: 'Space Mono', monospace;
+      font-size: 11px;
+    }
+
+    .rag-node {
+      background: rgba(0,229,255,0.06);
+      border: 1px solid rgba(0,229,255,0.15);
+      border-radius: 5px;
+      padding: 4px 10px;
+      color: var(--text-muted);
+      white-space: nowrap;
+    }
+
+    .rag-arrow { color: var(--accent); padding: 0 2px; }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 80px;
+      align-items: start;
+    }
+
+    .contact-info {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      margin-top: 36px;
+    }
+
+    .contact-item {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      color: var(--text-dim);
+      font-size: 15px;
+      text-decoration: none;
+      transition: color 0.2s;
+    }
+    .contact-item:hover { color: var(--accent); }
+
+    .contact-icon {
+      width: 42px; height: 42px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+      flex-shrink: 0;
+    }
+
+    .social-row {
+      display: flex;
+      gap: 10px;
+      margin-top: 28px;
+      flex-wrap: wrap;
+    }
+
+    .social-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--surface);
+      border: 1px solid var(--border);
+      color: var(--text-muted);
+      padding: 9px 18px;
+      border-radius: 8px;
+      font-size: 13px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.2s;
+    }
+    .social-btn:hover { border-color: var(--accent); color: var(--accent); }
+
+    .available-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(16,185,129,0.1);
+      border: 1px solid rgba(16,185,129,0.25);
+      color: var(--accent3);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-size: 13px;
+      font-weight: 600;
+      margin-bottom: 28px;
+    }
+
+    .available-badge::before {
+      content: '';
+      width: 7px; height: 7px;
+      background: var(--accent3);
+      border-radius: 50%;
+      animation: pulseDot 2s ease-in-out infinite;
+    }
+
+    .terminal-block {
+      margin-top: 70px;
+      background: var(--surface2);
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 28px 32px;
+      font-family: 'Space Mono', monospace;
+    }
+
+    .terminal-header {
+      display: flex;
+      gap: 6px;
+      margin-bottom: 20px;
+    }
+
+    .t-dot {
+      width: 12px; height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-line {
+      font-size: 13px;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      position: relative;
+      z-index: 1;
+      border-top: 1px solid var(--border);
+      padding: 28px 60px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-muted);
+      font-size: 13px;
+    }
+    footer span { color: var(--accent); }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    @keyframes fadeInRight {
+      from { opacity: 0; transform: translate(24px, -50%); }
+      to { opacity: 1; transform: translate(0, -50%); }
+    }
+
+    @media (max-width: 900px) {
+      nav { padding: 16px 24px; }
+      .nav-links { display: none; }
+      section { padding: 80px 24px; }
+      #hero { padding: 100px 24px 60px; }
+      .hero-stats { display: none; }
+      .about-grid, .contact-grid { grid-template-columns: 1fr; gap: 40px; }
+      footer { flex-direction: column; gap: 8px; padding: 24px; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <div class="orb orb-1"></div>
+  <div class="orb orb-2"></div>
+  <div class="orb orb-3"></div>
+
+  <nav>
+    <div class="nav-logo">SKT.dev</div>
+    <ul class="nav-links">
+      <li><a href="#about">About</a></li>
+      <li><a href="#experience">Experience</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section id="hero">
+    <div class="hero-content">
+      <div class="hero-tag">GenAI · FastAPI · React Native</div>
+      <h1 class="hero-name">Shivam Kumar<br><span>Thakur</span></h1>
+      <p class="hero-title">Full Stack Developer — 5 Years Experience</p>
+      <p class="hero-desc">
+        Building intelligent systems at the intersection of GenAI and scalable software. Specializing in RAG pipelines, LLM-powered applications, FastAPI backends, and enterprise React Native — currently shipping AI for Vodafone Idea (Vi).
+      </p>
+      <div class="hero-cta">
+        <a href="mailto:iamshivamthakur79@gmail.com" class="btn-primary">⚡ Hire Me</a>
+        <a href="#projects" class="btn-secondary">View Projects →</a>
+        <a href="https://drive.google.com/file/d/1gE5ZMCDHZiI4peRbWRPZSxXYxxsQrFwr/view?usp=sharing" class="btn-secondary" target="_blank">↓ Resume</a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat-card">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Years Exp.</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">12+</div>
+        <div class="stat-label">Apps Built</div>
+      </div>
+      <div class="stat-card">
+        <div class="stat-num">15+</div>
+        <div class="stat-label">Team Led</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about">
+    <div class="about-grid">
+      <div class="about-text">
+        <div class="section-label">// About me</div>
+        <h2 class="section-title">GenAI &<br><span>Full Stack</span><br>Engineer</h2>
+        <p>Software engineer specializing in GenAI-powered applications, scalable mobile systems, and intelligent backend architectures. I build production-grade RAG pipelines, LLM chatbots, and enterprise mobile apps.</p>
+        <p>Currently at <strong style="color:var(--accent)">iProgrammer Solutions</strong>, working on the core AI team for Vodafone Idea (Vi) — building RAG-based conversational agents using Azure AI Search, vector embeddings, and LangSmith-monitored pipelines that serve millions of users.</p>
+        <div class="about-highlights">
+          <div class="highlight-item"><div class="highlight-dot"></div>RAG Pipelines & LLM Orchestration with LangChain / LangGraph</div>
+          <div class="highlight-item"><div class="highlight-dot"></div>FastAPI async backends with production-grade error handling & SSE streaming</div>
+          <div class="highlight-item"><div class="highlight-dot"></div>React Native — enterprise mobile apps at 10M+ user scale</div>
+          <div class="highlight-item"><div class="highlight-dot"></div>Azure AI Foundry, Azure AI Search, vector DBs (FAISS, Pinecone)</div>
+          <div class="highlight-item"><div class="highlight-dot"></div>4★ Java HackerRank · 200+ LeetCode problems solved · Gen AI Certified</div>
+        </div>
+      </div>
+
+      <div class="about-skills-box">
+        <div class="skill-group">
+          <div class="skill-group-label">GenAI & ML</div>
+          <div class="skill-tags">
+            <span class="skill-tag">GPT-4o</span>
+            <span class="skill-tag">LangChain</span>
+            <span class="skill-tag">LangGraph</span>
+            <span class="skill-tag">RAG</span>
+            <span class="skill-tag">LangSmith</span>
+            <span class="skill-tag">FAISS</span>
+            <span class="skill-tag">Pinecone</span>
+            <span class="skill-tag">Hugging Face</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Backend & APIs</div>
+          <div class="skill-tags">
+            <span class="skill-tag purple">FastAPI</span>
+            <span class="skill-tag purple">Python</span>
+            <span class="skill-tag purple">REST APIs</span>
+            <span class="skill-tag purple">SSE</span>
+            <span class="skill-tag purple">WebSockets</span>
+            <span class="skill-tag purple">Pydantic</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Frontend & Mobile</div>
+          <div class="skill-tags">
+            <span class="skill-tag green">React Native</span>
+            <span class="skill-tag green">React</span>
+            <span class="skill-tag green">TypeScript</span>
+            <span class="skill-tag green">Redux Toolkit</span>
+          </div>
+        </div>
+        <div class="skill-group">
+          <div class="skill-group-label">Cloud & Infrastructure</div>
+          <div class="skill-tags">
+            <span class="skill-tag">Azure AI Foundry</span>
+            <span class="skill-tag">AWS</span>
+            <span class="skill-tag">Firebase</span>
+            <span class="skill-tag">MySQL</span>
+            <span class="skill-tag">MongoDB</span>
+            <span class="skill-tag">Docker</span>
+            <span class="skill-tag">CI/CD</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="section-label">// Work History</div>
+    <h2 class="section-title">Experience</h2>
+    <p class="section-sub">5 years building production software — from mobile apps at scale to enterprise GenAI systems deployed for millions of users.</p>
+
+    <div class="timeline">
+      <div class="timeline-item">
+        <div class="timeline-dot"></div>
+        <div class="timeline-date">JUN 2023 – PRESENT</div>
+        <div class="timeline-company">iProgrammer Solutions</div>
+        <div class="timeline-role">Software Engineer – Python, FastAPI & Generative AI · Pune, India</div>
+        <ul class="timeline-bullets">
+          <li>Built a <strong style="color:var(--text)">RAG-based Agent/Chatbot for Vodafone Idea (Vi)</strong> using Azure AI Search, vector embeddings, and LLM APIs — enabling grounded, enterprise-grade semantic search and intelligent responses at scale.</li>
+          <li>Engineered GenAI backend systems with prompt orchestration, LangSmith tracing and evaluation, and optimized retrieval pipelines to reduce hallucinations and improve response performance.</li>
+          <li>Developed scalable RESTful APIs using FastAPI (Python) with async architecture, validation, authentication, and production-grade error handling.</li>
+          <li>Integrated Server-Sent Events (SSE) for real-time low-latency streaming responses directly from LLM inference endpoints.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="border-color:var(--accent2);box-shadow:0 0 12px rgba(124,58,237,0.4)"></div>
+        <div class="timeline-date" style="color:var(--accent2)">JUN 2022 – JUN 2023</div>
+        <div class="timeline-company">Mobiloitte Technology</div>
+        <div class="timeline-role">Team Lead & Software Engineer – Mobile · Pune, India</div>
+        <ul class="timeline-bullets">
+          <li>Led a team of <strong style="color:var(--text)">15+ developers</strong>, successfully delivering 8+ cross-platform mobile applications on time and within budget.</li>
+          <li>Developed production-grade <strong style="color:var(--text)">crypto wallets</strong> (Metamask integration) and social networking applications with real-time messaging, photo/video sharing, and rewards systems.</li>
+          <li>Integrated third-party APIs and WebSockets to enable live cryptocurrency transactions in wallet and exchange applications.</li>
+          <li>Improved UI responsiveness using React Native Reanimated and implemented real-time push features via FCM and WebSockets.</li>
+        </ul>
+      </div>
+
+      <div class="timeline-item">
+        <div class="timeline-dot" style="border-color:var(--accent3);box-shadow:0 0 12px rgba(16,185,129,0.4)"></div>
+        <div class="timeline-date" style="color:var(--accent3)">JAN 2021 – MAY 2022</div>
+        <div class="timeline-company">Wyreflow Technologies (CRTD)</div>
+        <div class="timeline-role">Software Engineer – React Native & Backend · Bhopal, India</div>
+        <ul class="timeline-bullets">
+          <li>Built end-to-end mobile and backend solutions using React Native and FastAPI from scratch.</li>
+          <li>Developed scalable REST APIs with async IO and clean architecture principles.</li>
+          <li>Designed and optimized SQL-based relational databases; deployed cloud-native applications on AWS/Azure via Docker CI/CD pipelines.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="section-label">// Portfolio</div>
+    <h2 class="section-title">GenAI <span>Projects</span></h2>
+    <p class="section-sub">Real-world AI applications — RAG pipelines, LLM tooling, and intelligent mobile systems in production.</p>
+
+    <div class="projects-grid">
+
+      <!-- MyMoney RAG -->
+      <div class="project-card">
+        <div class="project-icon">💰</div>
+        <div class="project-name">MyMoney Tracking RAG</div>
+        <div class="project-desc">AI-powered personal finance assistant that retrieves and analyzes users' real Firestore transaction data using RAG to answer natural language money queries with grounded, accurate streaming responses.</div>
+        <div class="rag-flow">
+          <div class="rag-node">User Query</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">LangChain RAG</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">Firestore</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">SSE Stream</div>
+        </div>
+        <ul class="project-features">
+          <li>JWT authentication with refresh tokens + Firebase auth</li>
+          <li>Real-time streaming responses via Server-Sent Events</li>
+          <li>Session-based conversation history stored in JSONL</li>
+          <li>Modular RAG pipeline — LangChain + OpenRouter API</li>
+          <li>Robust data validation with Pydantic throughout</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">RAG</span>
+          <span class="stack-tag">Firebase</span>
+          <span class="stack-tag">SSE</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">OpenRouter</span>
+          <span class="stack-tag">aiohttp</span>
+        </div>
+        <div class="project-links">
+          <a href="https://lnkd.in/gRp2wvVC" class="project-link" target="_blank">▶ Demo</a>
+          <a href="https://lnkd.in/gAAQhWnG" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <!-- YouTube RAG Bot -->
+      <div class="project-card">
+        <div class="project-icon">🎬</div>
+        <div class="project-name">YouTube RAG Chat Bot</div>
+        <div class="project-desc">Conversational AI that lets you ask natural language questions about any YouTube video — auto-fetches transcripts, generates embeddings, and uses hybrid retrieval (Vector + BM25) for precise, context-aware answers.</div>
+        <ul class="project-features">
+          <li>Hybrid search: Vector embeddings + BM25 keyword retrieval</li>
+          <li>Cached embeddings for fast repeated queries</li>
+          <li>Auto transcript fetch via YouTube Transcript API</li>
+          <li>FAISS vector store orchestrated by LangChain</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">FAISS</span>
+          <span class="stack-tag">BM25</span>
+          <span class="stack-tag">Streamlit</span>
+          <span class="stack-tag">OpenAPI</span>
+          <span class="stack-tag">RAG</span>
+          <span class="stack-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://lnkd.in/g78ApqDh" class="project-link" target="_blank">▶ Demo</a>
+          <a href="https://github.com/devshivamthakur/youtube_rag_chat_bot" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <!-- AI Resume ATS -->
+      <div class="project-card">
+        <div class="project-icon">📄</div>
+        <div class="project-name">AI Resume ATS Optimizer</div>
+        <div class="project-desc">LLM-powered resume optimization platform that tailors resumes to job descriptions while preventing hallucinated skills. Combines LangChain workflows, Hugging Face NLP, and LaTeX for ATS-friendly output.</div>
+        <ul class="project-features">
+          <li>LLM-based keyword extraction — no static keyword lists</li>
+          <li>ATS-aware rewriting with LaTeX rendering output</li>
+          <li>Job description validation before any optimization runs</li>
+          <li>Structured LangChain prompt chaining workflow</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">Hugging Face</span>
+          <span class="stack-tag">Streamlit</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">LaTeX</span>
+          <span class="stack-tag">NLP</span>
+        </div>
+        <div class="project-links">
+          <a href="https://lnkd.in/g9eCg8w9" class="project-link" target="_blank">▶ Live App</a>
+          <a href="https://lnkd.in/gBABTdFB" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <!-- MyMoney App -->
+      <div class="project-card">
+        <div class="project-icon">📊</div>
+        <div class="project-name">My Money Tracking App</div>
+        <div class="project-desc">Personal finance mobile app with offline-first architecture, real-time Firebase sync, budgeting tools, and a built-in GenAI conversational assistant for expense queries. Published on Indus App Store.</div>
+        <ul class="project-features">
+          <li>Offline-first architecture with real-time cloud sync</li>
+          <li>GenAI assistant for natural language expense queries</li>
+          <li>Intuitive analytics charts and transaction history</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">React Native</span>
+          <span class="stack-tag">Firebase</span>
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">TypeScript</span>
+        </div>
+        <div class="project-links">
+          <a href="https://www.indusappstore.com/apps/communication/mmt/com.codecraftedmmt/?page=details&id=com.codecraftedmmt" class="project-link" target="_blank">▶ Install App</a>
+        </div>
+      </div>
+
+      <!-- Vi App -->
+      <div class="project-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div class="project-icon" style="margin-bottom:0">📱</div>
+          <span style="font-family:'Space Mono',monospace;font-size:10px;background:rgba(0,229,255,0.08);border:1px solid rgba(0,229,255,0.2);color:var(--accent);padding:3px 10px;border-radius:100px;letter-spacing:1px">ENTERPRISE · 10M+ USERS</span>
+        </div>
+        <div class="project-name">Vodafone Idea (Vi) App</div>
+        <div class="project-desc">Core contributor on the Vi telecom super-app — India's leading telecom platform serving millions of users. Integrated GenAI-powered conversational assistant and built the RAG-based chatbot backend for real-time customer support.</div>
+        <ul class="project-features">
+          <li>RAG-based chatbot using Azure AI Search + LLM APIs</li>
+          <li>SSE streaming for low-latency AI responses in-app</li>
+          <li>Scalable FastAPI backend with prompt orchestration</li>
+          <li>LangSmith tracing & evaluation for production AI monitoring</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">RAG</span>
+          <span class="stack-tag">Azure AI Search</span>
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">LangSmith</span>
+          <span class="stack-tag">SSE</span>
+          <span class="stack-tag">React Native</span>
+        </div>
+        <div class="project-links">
+          <a href="https://play.google.com/store/apps/details?id=com.mventus.selfcare.activity&hl=en_IN" class="project-link" target="_blank">▶ Play Store</a>
+        </div>
+      </div>
+
+      <!-- Deep Marine Mind -->
+      <div class="project-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:16px">
+          <div class="project-icon" style="margin-bottom:0">⚓</div>
+          <span style="font-family:'Space Mono',monospace;font-size:10px;background:rgba(124,58,237,0.08);border:1px solid rgba(124,58,237,0.2);color:#a78bfa;padding:3px 10px;border-radius:100px;letter-spacing:1px">IPROGRAMMER · AI PLATFORM</span>
+        </div>
+        <div class="project-name">Deep Marine Mind</div>
+        <div class="project-desc">AI-powered maritime recruitment platform connecting 1M+ seafarers globally to job opportunities. Features Sea Buddy — a 24/7 AI maritime assistant covering cargo handling, navigation, SOLAS/MARPOL compliance, and career mentorship.</div>
+        <div class="rag-flow">
+          <div class="rag-node">Seafarer Profile</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">AI Matching</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">Sea Buddy</div>
+          <div class="rag-arrow">→</div>
+          <div class="rag-node">Job Match</div>
+        </div>
+        <ul class="project-features">
+          <li>AI Matching Engine — analyzes certs, history, vessel preferences</li>
+          <li>Sea Buddy AI assistant: navigation, safety, STCW/MARPOL/SOLAS</li>
+          <li>Smart job search by vessel type, rank, salary, location</li>
+          <li>Oral exam prep, study guides, maritime career mentorship</li>
+          <li>Freemium model: Free / Plus ($5/mo) / Pro ($9.99/mo)</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">LLMs</span>
+          <span class="stack-tag">RAG</span>
+          <span class="stack-tag">React Native</span>
+          <span class="stack-tag">AI Matching</span>
+          <span class="stack-tag">Firebase</span>
+        </div>
+        <div class="project-links">
+          <a href="#" class="project-link" style="color:var(--accent3)">🌊 Maritime AI Platform</a>
+        </div>
+      </div>
+
+      <!-- URL Shortener -->
+      <div class="project-card">
+        <div class="project-icon">🔗</div>
+        <div class="project-name">URL Shortener Platform</div>
+        <div class="project-desc">Full-stack URL shortener with link analytics, QR code generation, and one-click copy. Secure FastAPI backend with MongoDB storage, input validation, and performance-optimized routing.</div>
+        <ul class="project-features">
+          <li>QR code generation and instant download</li>
+          <li>Link analytics and click-through tracking</li>
+          <li>FastAPI backend with full input validation</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">MongoDB</span>
+          <span class="stack-tag">Python</span>
+        </div>
+        <div class="project-links">
+          <a href="https://shortnerurl.github.io" class="project-link" target="_blank">▶ Visit Site</a>
+        </div>
+      </div>
+
+      <!-- Daily Task Tracker -->
+      <div class="project-card">
+        <div class="project-icon">✅</div>
+        <div class="project-name">Daily Task Tracker</div>
+        <div class="project-desc">Premium productivity web app for managing daily tasks with streaks, categories, calendar view, and progress analytics. Built with TanStack Start, featuring keyboard shortcuts, theme toggling, and smart filtering.</div>
+        <ul class="project-features">
+          <li>Task CRUD with priority, due dates, and category tags</li>
+          <li>Streak tracking — day streak, longest streak, and daily progress</li>
+          <li>Rich filtering: All, Pending, Completed, Overdue, High Priority, Today, This Week</li>
+          <li>Category-based organization: personal, work, study, fitness, shopping, other</li>
+          <li>Calendar view with monthly navigation and date-based task preview</li>
+          <li>Interactive statistics dashboard with completion metrics</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">React 19</span>
+          <span class="stack-tag">TanStack Start</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">Tailwind CSS</span>
+          <span class="stack-tag">Radix UI</span>
+          <span class="stack-tag">Framer Motion</span>
+          <span class="stack-tag">React Query</span>
+          <span class="stack-tag">Zod</span>
+        </div>
+        <div class="project-links">
+          <a href="https://dailytasktracker-beige.vercel.app/" class="project-link" target="_blank">▶ Live App</a>
+          <a href="https://github.com/devshivamthakur/daily-task-tracker" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <!-- CareerAI -->
+      <div class="project-card">
+        <div class="project-icon">🧠</div>
+        <div class="project-name">CareerAI — AI Job Assistant</div>
+        <div class="project-desc">Intelligent AI-powered job application assistant — tailors résumés, generates cover letters, prepares for interviews, and answers career questions through a conversational chat agent with real-time SSE streaming.</div>
+        <ul class="project-features">
+          <li>AI Chat Agent with tool-calling, session memory, and real-time SSE streaming</li>
+          <li>Resume Tailoring — ATS-optimized rewrites via 4-node LangGraph state machine</li>
+          <li>Cover Letter Generation & Interview Prep with STAR-format answers</li>
+          <li>ATS Score (0–100) with matched/missing skills breakdown</li>
+          <li>Production infra: semantic caching, rate limiting, circuit breaker</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">LangChain</span>
+          <span class="stack-tag">LangGraph</span>
+          <span class="stack-tag">React</span>
+          <span class="stack-tag">TypeScript</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">Redis</span>
+          <span class="stack-tag">SSE</span>
+        </div>
+        <div class="project-links">
+          <a href="https://career-ai-tan.vercel.app/chat" class="project-link" target="_blank">▶ Live Demo</a>
+          <a href="https://github.com/devshivamthakur/career-ai" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+      <!-- AI News Aggregator -->
+      <div class="project-card">
+        <div class="project-icon">📰</div>
+        <div class="project-name">AI News Aggregator</div>
+        <div class="project-desc">Automated AI news aggregation platform — fetches AI-related news from RSS feeds and YouTube, summarizes and categorizes with LLM, stores in PostgreSQL, and sends personalized email digests based on user interests.</div>
+        <ul class="project-features">
+          <li>Multi-source ingestion: RSS feeds, YouTube channels, web scraping</li>
+          <li>OpenAI-powered titles, summaries, and content categorization</li>
+          <li>User accounts with JWT auth and digest subscription management</li>
+          <li>APScheduler for daily automated aggregation cycles</li>
+          <li>SMTP email digests with Jinja2 HTML templates</li>
+        </ul>
+        <div class="project-stack">
+          <span class="stack-tag">FastAPI</span>
+          <span class="stack-tag">Python</span>
+          <span class="stack-tag">PostgreSQL</span>
+          <span class="stack-tag">OpenAI</span>
+          <span class="stack-tag">JWT</span>
+          <span class="stack-tag">Docker</span>
+          <span class="stack-tag">APScheduler</span>
+        </div>
+        <div class="project-links">
+          <a href="https://github.com/devshivamthakur/ai-news-aggregater" class="project-link github" target="_blank">⌥ GitHub</a>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <div class="contact-grid">
+      <div>
+        <div class="section-label">// Get in touch</div>
+        <h2 class="section-title">Let's Build<br><span>Something</span></h2>
+        <div class="available-badge">Available for freelance & full-time</div>
+
+        <div class="contact-info">
+          <a href="mailto:iamshivamthakur79@gmail.com" class="contact-item">
+            <div class="contact-icon">✉</div>
+            iamshivamthakur79@gmail.com
+          </a>
+          <a href="tel:+917974909938" class="contact-item">
+            <div class="contact-icon">📞</div>
+            +91 7974909938
+          </a>
+          <div class="contact-item">
+            <div class="contact-icon">📍</div>
+            Pune, MH, India
+          </div>
+        </div>
+
+        <div class="social-row">
+          <a href="https://www.linkedin.com/in/shivam-kumar-thakur-598150170/" class="social-btn" target="_blank">in LinkedIn</a>
+          <a href="https://github.com/devshivamthakur" class="social-btn" target="_blank">⌥ GitHub</a>
+          <a href="https://www.instagram.com/dev_shivam_thakur/" class="social-btn" target="_blank">◎ Instagram</a>
+        </div>
+      </div>
+
+      <div>
+        <div class="terminal-block">
+          <div class="terminal-header">
+            <div class="t-dot" style="background:#ff5f56"></div>
+            <div class="t-dot" style="background:#ffbd2e"></div>
+            <div class="t-dot" style="background:#27c93f"></div>
+          </div>
+          <div class="terminal-line"><span style="color:var(--accent3)">$</span> <span style="color:var(--text-dim)">shivam --skills</span></div>
+          <div class="terminal-line" style="margin-top:10px">
+            <span style="color:var(--accent3)">✓</span> <span style="color:var(--text-muted)">LLMs · RAG · LangChain · LangGraph · LangSmith</span>
+          </div>
+          <div class="terminal-line"><span style="color:var(--accent3)">✓</span> <span style="color:var(--text-muted)">FastAPI · SSE · async Python · Pydantic</span></div>
+          <div class="terminal-line"><span style="color:var(--accent3)">✓</span> <span style="color:var(--text-muted)">Azure AI Search · FAISS · Pinecone · vector DBs</span></div>
+          <div class="terminal-line"><span style="color:var(--accent3)">✓</span> <span style="color:var(--text-muted)">React Native · Redux Toolkit · TypeScript</span></div>
+          <div class="terminal-line"><span style="color:var(--accent3)">✓</span> <span style="color:var(--text-muted)">Docker · AWS · Azure CI/CD</span></div>
+          <div class="terminal-line" style="margin-top:14px; color:var(--accent)">_ ready to build your next AI product</div>
+        </div>
+
+        <div style="margin-top: 28px;">
+          <a href="mailto:iamshivamthakur79@gmail.com" class="btn-primary">⚡ Start a conversation</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div>Built by <span>Shivam Kumar Thakur</span> — GenAI · FastAPI · React Native</div>
+    <div>iamshivamthakur79@gmail.com</div>
+  </footer>
+
+</body>
+</html>
