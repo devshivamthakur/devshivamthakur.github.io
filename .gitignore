@@ -6,4 +6,3 @@ dist/
 
 # Published build (copied to root by `npm run publish`)
 assets/
-.index.source.html
