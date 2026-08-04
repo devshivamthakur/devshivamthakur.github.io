@@ -171,24 +171,6 @@ export default function About() {
               ))}
             </div>
           </div>
-
-          {/* Full-Stack Card */}
-          <div className="min-service-card">
-            <div className="min-service-icon">💻</div>
-            <h3 className="min-service-title">Full-Stack &amp; Mobile</h3>
-            <span className="min-service-subtitle">Modern Applications &amp; Scalable Services</span>
-            <p className="min-service-desc">
-              Building robust web backends with FastAPI and Python, and highly performant, fluid client applications for web and mobile using React, React Native, and TypeScript. Fully versed in database modeling and Docker deployments.
-            </p>
-            <div className="min-service-skills-title">Core Toolbox</div>
-            <div className="min-service-skills">
-              {[...(skills['Backend & APIs'] || []), ...(skills['Frontend & Mobile'] || [])].slice(0, 10).map((skill) => (
-                <span key={skill} className="min-service-skill-tag">
-                  {skill}
-                </span>
-              ))}
-            </div>
-          </div>
         </div>
       </section>
 
