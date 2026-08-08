@@ -32,6 +32,17 @@ export default function Chatbot() {
     }
   }, [isOpen]);
 
+  // Close on Escape key (mobile)
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape' && isOpen) {
+        setIsOpen(false);
+      }
+    };
+    window.addEventListener('keydown', handleEscape);
+    return () => window.removeEventListener('keydown', handleEscape);
+  }, [isOpen]);
+
   const sendMessage = async (e) => {
     e?.preventDefault();
     const trimmed = input.trim();
@@ -149,6 +160,12 @@ export default function Chatbot() {
 
   return (
     <>
+      {/* Backdrop for mobile */}
+      <div
+        className={`chatbot-backdrop ${isOpen ? 'chatbot-backdrop--open' : ''}`}
+        onClick={() => setIsOpen(false)}
+      />
+
       {/* Chat Toggle Button */}
       <button
         className={`chatbot-toggle ${isOpen ? 'chatbot-toggle--open' : ''}`}

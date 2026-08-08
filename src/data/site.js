@@ -519,40 +519,50 @@ export const portfolioProjects = [
 
 export const experience = [
   {
-    company: 'iProgrammer Solutions',
-    role: 'Software Engineer — Python, FastAPI & Generative AI',
-    period: 'Jun 2023 — Present',
+    company: 'Rolling Arrays',
+    role: 'Software Engineer — Python, FastAPI, LangGraph & Generative AI',
+    period: 'Jun 2026 — Present',
     location: 'Pune, India',
     bullets: [
-      'Built a RAG-based Agent/Chatbot for Vodafone Idea (Vi) using Azure AI Search, vector embeddings and LLM APIs — grounded, enterprise-grade semantic search at scale.',
-      'Engineered GenAI backend systems with prompt orchestration, LangSmith tracing/evaluation and optimized retrieval to reduce hallucinations.',
-      'Developed scalable FastAPI REST APIs with async architecture, validation, auth and production error handling.',
-      'Integrated Server-Sent Events for real-time low-latency streaming from LLM inference endpoints.'
-    ]
+      'Integrated Vision LLMs for intelligent document understanding, enabling extraction and validation of information from onboarding documents, images, and scanned files.',
+      'Designed a LangGraph-based agent workflow with multiple processing nodes for document ingestion, information extraction, validation, and onboarding checklist verification.',
+      'Built backend APIs using Python and FastAPI to integrate AI agents, document-processing services, and frontend applications.',
+    ],
+  },
+  {
+    company: 'IProgrammer',
+    role: 'Software Engineer — Python, FastAPI, LangGraph & Generative AI',
+    period: 'Jun 2023 — May 2026',
+    location: 'Pune, India',
+    bullets: [
+      'Developed scalable RESTful APIs using FastAPI (Python) with asynchronous architecture, validation, authentication, and production-grade error handling.',
+      'Built a RAG-based Agent/Chatbot for Vodafone Idea (Vi) app using Azure AI Search, vector embeddings, LangGraph, LangChain and LLM APIs to enable grounded, enterprise-grade semantic search and intelligent responses.',
+      'Engineered GenAI backend systems with prompt orchestration, LangSmith tracing, and optimized retrieval pipelines to reduce hallucinations and improve response performance.',
+    ],
   },
   {
     company: 'Mobiloitte Technology',
-    role: 'Team Lead & Software Engineer — Mobile',
+    role: 'Software Engineer — React Native & Python - FastAPI',
     period: 'Jun 2022 — Jun 2023',
     location: 'Pune, India',
     bullets: [
-      'Led a team of 15+ developers, delivering 8+ cross-platform mobile applications on time and within budget.',
-      'Developed production-grade crypto wallets (Metamask integration) and social apps with real-time messaging, media sharing and rewards.',
-      'Integrated third-party APIs and WebSockets for live crypto transactions in wallet/exchange apps.',
-      'Improved UI responsiveness with React Native Reanimated; real-time push via FCM and WebSockets.'
-    ]
+      'Led a team of 15+ developers and delivered 4+ production applications.',
+      'Developed high-performance backend services using Python (FastAPI) with asynchronous support and clean architecture.',
+      'Designed and integrated scalable REST APIs ensuring low latency and high reliability.',
+      'Improved application performance, reduced API response time, and enhanced overall user experience.',
+    ],
   },
   {
-    company: 'Wyreflow Technologies (CRTD)',
-    role: 'Software Engineer — React Native & Backend',
+    company: 'Wyreflow Technologies (Paid Internship)',
+    role: 'React Native & Python developer',
     period: 'Jan 2021 — May 2022',
     location: 'Bhopal, India',
     bullets: [
-      'Built end-to-end mobile and backend solutions using React Native and FastAPI from scratch.',
-      'Developed scalable REST APIs with async IO and clean architecture principles.',
-      'Designed optimized SQL databases; deployed on AWS/Azure with Docker CI/CD.'
-    ]
-  }
+      'Built end-to-end mobile and backend solutions using React Native and FastAPI.',
+      'Developed scalable REST APIs with asynchronous IO and clean architecture principles.',
+      'Designed and optimized SQL-based relational databases.',
+    ],
+  },
 ];
 
 export const skills = {
