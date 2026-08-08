@@ -1,6 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { experience, profile, skills } from '../data/site.js';
+import Chatbot from '../components/Chatbot.jsx';
 
 export default function About() {
   const aboutRef = useRef(null);
@@ -307,6 +308,9 @@ export default function About() {
           </div>
         </div>
       </footer>
+
+      {/* Portfolio Chatbot */}
+      <Chatbot />
     </div>
   );
 }
