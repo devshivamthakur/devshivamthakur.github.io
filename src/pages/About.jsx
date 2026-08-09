@@ -192,23 +192,28 @@ export default function About() {
           </div>
 
           {/* Jobs mapping */}
-          {experience.map((job, idx) => (
-            <div key={idx} className="min-timeline-item">
-              <div className="min-timeline-dot" />
-              <div className="min-timeline-year">{job.period.split('—')[0].trim()}</div>
-              <h3 className="min-timeline-title">{job.role.split('—')[0].trim()}</h3>
-              <div className="min-timeline-company">
-                {job.company} <span>• {job.location}</span>
+          {experience.map((job, idx) => {
+            const [start, end] = job.period.split('—').map((s) => s.trim());
+            return (
+              <div key={idx} className="min-timeline-item">
+                <div className="min-timeline-dot" />
+                <div className="min-timeline-year">
+                  {start} — {end}
+                </div>
+                <h3 className="min-timeline-title">{job.role.split('—')[0].trim()}</h3>
+                <div className="min-timeline-company">
+                  {job.company} <span>• {job.location}</span>
+                </div>
+                <div className="min-timeline-desc">
+                  <ul>
+                    {job.bullets.map((bullet, bulletIdx) => (
+                      <li key={bulletIdx}>{bullet}</li>
+                    ))}
+                  </ul>
+                </div>
               </div>
-              <div className="min-timeline-desc">
-                <ul>
-                  {job.bullets.map((bullet, bulletIdx) => (
-                    <li key={bulletIdx}>{bullet}</li>
-                  ))}
-                </ul>
-              </div>
-            </div>
-          ))}
+            );
+          })}
         </div>
       </section>
 
