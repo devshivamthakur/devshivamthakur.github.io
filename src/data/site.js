@@ -159,7 +159,7 @@ export const products = [
     icon: '📰',
     gradient: 'linear-gradient(135deg, #059669, #0ea5e9)',
     links: {
-      live: 'https://insightstream-steel.vercel.app/',
+      live: 'https://ai-news-insightstream.vercel.app/',
       github: 'https://github.com/devshivamthakur/ai-news-aggregater'
     },
     features: [
