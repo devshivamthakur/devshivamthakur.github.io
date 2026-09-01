@@ -2,6 +2,33 @@
 
 export const blogs = [
   {
+    slug: 'self-improving-ai-agents-how-feedback-loops-turn-llm-systems-into-continuously-learning-machines-54fd5a4bf920',
+    title: 'Self-Improving AI Agents: How Feedback Loops Turn LLM Systems into Continuously Learning Machines',
+    excerpt:
+      'You ship an AI agent. It works well on day one. By day thirty, it’s making the same mistakes it made on day one — the same hallucinations, the same outdated answers, the same blind spots in your knowledge base. Nothing has changed, because nothing was designed to change.',
+    date: 'Aug 2026',
+    claps: 0,
+    readingTime: '9 min'
+  },
+  {
+    slug: 'rag-vs-fine-tuning-vs-ai-agents-when-to-use-what-in-real-world-ai-systems-214485303f34',
+    title: 'RAG vs Fine-Tuning vs AI Agents: When to Use What in Real-World AI Systems',
+    excerpt:
+      'If you’ve spent any real time building with LLMs, you’ve asked yourself this question — or its cousin, “Do I actually need agents, or would a smarter prompt do?”',
+    date: 'Aug 2026',
+    claps: 0,
+    readingTime: '10 min'
+  },
+  {
+    slug: 'memory-in-ai-agents-why-your-chatbot-forgets-everything-and-how-to-fix-it-25d731e33a6e',
+    title: 'Memory in AI Agents: Why Your Chatbot Forgets Everything (And How to Fix It)',
+    excerpt:
+      'You’ve built an agent. It calls tools, reasons through multi-step tasks, maybe even uses LangGraph to orchestrate a graph of sub-agents. It’s impressive in the demo.',
+    date: 'Aug 2026',
+    claps: 0,
+    readingTime: '7 min'
+  },
+  {
     slug: 'why-evaluation-matters-in-llm-applications-a-developers-guide-d27fee05ef05',
     title: 'Why Evaluation Matters in LLM Applications: A Developer’s Guide',
     excerpt:
