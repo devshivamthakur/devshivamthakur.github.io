@@ -1,7 +1,7 @@
 import { useState, useRef, useEffect, useCallback } from 'react';
 import ReactMarkdown from 'react-markdown';
 
-const API_URL = 'https://personal-portfolio-agent-z0t0.onrender.com/api/v1/chat/stream';
+const API_URL = 'https://personal-portfolio-agent-0nxv.onrender.com/api/v1/chat/stream';
 
 export default function Chatbot() {
   const [isOpen, setIsOpen] = useState(false);
